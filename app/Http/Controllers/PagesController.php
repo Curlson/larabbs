@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+    // 测试
     public function root()
     {
         return view('pages.root');
