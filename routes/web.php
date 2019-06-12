@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'PagesController@root')->name('root');
+
+Route::get('/hello', function() {
+    return 'Hello World';
+});
