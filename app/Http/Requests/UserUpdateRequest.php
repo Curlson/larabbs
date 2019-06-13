@@ -29,6 +29,7 @@ class UserUpdateRequest extends FormRequest
             'name' => ['required','between:3,25',' regex:/^[A-Za-z0-9\-\_]+$/', ],
             'email' => 'required|email',
             'introduction' => 'max:80',
+            'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208'
         ];
     }
     
@@ -38,6 +39,7 @@ class UserUpdateRequest extends FormRequest
             'name' => '用户名',
             'email' => '邮箱',
             'introduction' => '个人简介',
+            'avatar' => '头像',
         ];
     }
 }
