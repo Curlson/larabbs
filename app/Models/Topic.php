@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Model\Category;
-
 class Topic extends Model
 {
     protected $fillable = [
