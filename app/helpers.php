@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 function route_class()
 {
@@ -12,7 +13,8 @@ function category_nav_active($category_id)
     return active_class((if_route('category.show') && if_route_param('category', $category_id)));
 }
 
-function hello()
+function make_excerpt($value, $length = 200)
 {
-    return 'Hello World';
+    $excerpt = trim(preg_replace('/\r\n|]r|\n+/', ' ', strip_tags($value)));
+    return Str::limit($excerpt, $length);
 }
