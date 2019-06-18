@@ -13,12 +13,15 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
 
-    .sass('resources/sass/app.scss', 'public/css').version(); // <-- 防止静态文件缓存
-
-if(Mix.isWatching()){
-	mix.webpackConfig({
-		watchOptions:{
-			ignored: /node_modules/,
-		},
-	})
-};
+  .sass('resources/sass/app.scss', 'public/css')
+  .version() // <-- 防止静态文件缓存
+  .copyDirectory('resources/editor/js', 'public/js')
+  .copyDirectory('resources/editor/css', 'public/css');
+if (Mix.isWatching()) {
+  mix.webpackConfig({
+    watchOptions: {
+      ignored: /node_modules/,
+    },
+  })
+}
+;
