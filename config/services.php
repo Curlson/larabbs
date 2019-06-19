@@ -43,5 +43,9 @@ return [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
+    'baidu_translate' => [
+        'appid' => env('BAIDU_TRANSLATE_APPID'),//'20190618000308539',
+        'key' => env('BAIDU_TRANSLATE_KEY'),//'pEgTArXkvGgwdQT9geTb',
+    ],
 
 ];
