@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\Category;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Topic;
