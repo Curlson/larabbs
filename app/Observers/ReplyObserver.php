@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Reply;
+use App\Notifications\TopicReplied;
 use HTMLPurifier;
 
 // creating, created, updating, updated, saving,
@@ -21,6 +22,9 @@ class ReplyObserver
         // 增加 topic 对应的回复数量
         $reply->topic->reply_count = $reply->topic->replies->count();
         $reply->topic->save();
+        
+        // 通知话题作者又新的评论
+        $reply->topic->user->notify(new TopicReplied($reply));
     }
 
     public function updating(Reply $reply)
