@@ -20,15 +20,14 @@ class ReplyObserver
     public function created(Reply $reply)
     {
         // 增加 topic 对应的回复数量
-        $reply->topic->reply_count = $reply->topic->replies->count();
-        $reply->topic->save();
+        $reply->updateReplyCount($reply);
         
         // 通知话题作者又新的评论
         $reply->topic->user->notify(new TopicReplied($reply));
     }
 
-    public function updating(Reply $reply)
+    public function deleted(Reply $reply)
     {
-        //
+        $reply->updateReplyCount($reply);
     }
 }
