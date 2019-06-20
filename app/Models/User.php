@@ -71,4 +71,14 @@ class User extends Authenticatable implements MustVerifyEmailContract
     {
         return \Auth::id() == $model->user_id;
     }
+    
+    /**
+     * 将通知数量置位 0
+     */
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
+    }
 }
