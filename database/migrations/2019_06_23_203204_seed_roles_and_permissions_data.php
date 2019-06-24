@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -46,7 +48,7 @@ class SeedRolesAndPermissionsData extends Migration
         app(Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
 
 		// 清空所有数据表数据
-		$tableNames = config('psermission.table_names');
+		$tableNames = config('permission.table_names');
 
 		Model::unguard();
 		DB::table($tableNames['role_has_permissions'])->delete();
